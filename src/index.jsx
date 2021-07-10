@@ -1,17 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import './index.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
-
-// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
-// Learn more: https://www.snowpack.dev/concepts/hot-module-replacement
-if (import.meta.hot) {
-  import.meta.hot.accept();
+const ok1 = <div>{"import { createClient, Provider } from 'urql';"}</div>
+const ok2 = <div>{`import { createClient, Provider } from 'urql';`}</div>
+const ok3 = <div>{
+  `import { createClient, Provider } from 'urql';`}</div>
+const ok4 = <div>{`
+// import { createClient, Provider } from 'urql';`
 }
+</div>
+
+const bad1 = <div>
+{`
+  import { createClient, Provider } from 'urql';`
+}
+</div>
+const bad2 = <div>{`
+  import { createClient, Provider } from 'urql';`
+}
+</div>
+const bad3 = <div>{`
+import { createClient, Provider } from 'urql';`}
+</div>
